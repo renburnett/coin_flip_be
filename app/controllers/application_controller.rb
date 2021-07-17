@@ -1,4 +1,3 @@
-
 # parent class encodes JWT token for authorization,
 # checks for user authorization before allowing other actions
 class ApplicationController < ActionController::API
