@@ -10,34 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_17_005956) do
+ActiveRecord::Schema.define(version: 2021_07_27_220719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coin_flips", force: :cascade do |t|
+    t.datetime "date"
+    t.integer "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_coin_flips_on_user_id"
+  end
 
   create_table "prizes", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["user_id"], name: "index_prizes_on_user_id"
-  end
-
-  create_table "tokens", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
+    t.integer "tokens"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "past_coin_flips"
   end
 
+  add_foreign_key "coin_flips", "users"
 end

@@ -8,10 +8,13 @@
 
 User.destroy_all
 Prize.destroy_all
-Token.destroy_all
+CoinFlip.destroy_all
 
-u1 = User.create(name: "ron", email: "r@r.com", password: "123")
+u1 = User.create(name: "ron", email: "r@r.com", password: "123", tokens: 50)
 
-t1 = Token.create(value: 1, user_id: u1.id)
+p1 = Prize.create(value: 2, name: "teddy bear")
 
-p1 = Prize.create(value: 2)
+cf1 = CoinFlip.create(result: :heads, date: Time.now(), user_id: u1.id)
+
+
+
