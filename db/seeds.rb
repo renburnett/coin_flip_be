@@ -15,6 +15,3 @@ u1 = User.create(name: "ron", email: "r@r.com", password: "123", tokens: 50)
 p1 = Prize.create(value: 2, name: "teddy bear")
 
 cf1 = CoinFlip.create(result: :heads, date: Time.now(), user_id: u1.id)
-
-
-
